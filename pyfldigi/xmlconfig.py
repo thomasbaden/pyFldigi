@@ -222,7 +222,7 @@ class XmlMonitor(object):
         self.logger.addHandler(self.fh)
         self.logger.addHandler(self.sh)
 
-        self.logger.info('Monitoring {}...'.format(self.location))
+        self.logger.info('Monitoring %s...', self.location)
 
         # Setup the thread
         self._timer = None
@@ -257,7 +257,7 @@ class XmlMonitor(object):
             for key, value in old.items():
                 try:
                     if new[key] != value:
-                        self.logger.info('{} changed from {} to {}'.format(key.upper(), value, new[key]))
+                        self.logger.info('%s changed from %r to %r', key.upper(), value, new[key])
                 except KeyError:
                     pass  # TBD
             self.settings = new

@@ -397,7 +397,7 @@ class Main(object):
         >>> c.main.send('Lorem ipsum dolor sit amet', timeout=50)
         '''
         state = self.clientObj.main.get_trx_state()
-        self.logger.debug('send(): state={}'.format(state))
+        self.logger.debug('send(): state=%r', state)
 
         if state == 'TX':  # already chooching
             tx_start = time.time()
