@@ -282,7 +282,7 @@ class Main(object):
         >>> fldigi.get_trx_state()
         'RX'
         '''
-        for tries in range(0, 3):  # retry up to 3 times.
+        for tries in range(3):  # retry up to 3 times.
             try:
                 state = str(self.client.main.get_trx_status()).upper()
             except Exception as e:
