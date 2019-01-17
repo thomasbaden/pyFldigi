@@ -418,7 +418,7 @@ class Main(object):
                 if time.time() - tx_start >= timeout:
                     raise TimeoutError('Timeout while transmitting, waiting for first byte to go out')
         else:
-            raise Exception('cannot transmit if FLDIGI state is \'{}\''.format(state))
+            raise Exception('cannot transmit if FLDIGI state is {!r}'.format(state))
 
         if block is True:
             while(1):

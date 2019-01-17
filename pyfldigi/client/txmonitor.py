@@ -59,9 +59,9 @@ class _TxData(object):
         else:
             data = str(self.data)
         if len(self.data) > 25:
-            data = '\'{}\'... (length={})'.format(data[0:25], len(data))
+            data = '{!r}... (length={})'.format(data[:25], len(data))
         else:
-            data = '\'{}\''.format(data)
+            data = '{!r}'.format(data)
         return 'T={:.3f}s: {}'.format(self.time, data)
 
 
@@ -74,8 +74,8 @@ class _History(object):
         self.txdata_history = []
 
     def __str__(self):
-        s = 'State History:\n{}\n'.format('\n'.join(['  {}'.format(str(i)) for i in self.state_history]))
-        s += 'TX data History:\n{}\n'.format('\n'.join(['  {}'.format(str(i)) for i in self.txdata_history]))
+        s = 'State History:\n{}\n'.format('\n'.join('  {}'.format(str(i)) for i in self.state_history))
+        s += 'TX data History:\n{}\n'.format('\n'.join('  {}'.format(str(i)) for i in self.txdata_history))
         s += 'Last TX time was: {}\n'.format(self.get_last_txdata_time())
         return s
 
@@ -201,7 +201,7 @@ class TxMonitor(threading.Thread):
 
             except Exception as e:
                 raise
-                print('TXMONITOR: Exception: {}'.format(e))
+                self.logger.exception('TXMONITOR: Exception')
                 pass  # Daemon threads might run after python starts shutting down.  Ignore errors.
             self.heartbeat = time.time()
             time.sleep(self.interval)
