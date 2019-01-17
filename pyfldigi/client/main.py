@@ -104,7 +104,7 @@ class Main(object):
         NOTE: sphinx ignores docstrings from setters, the documentation is above under the @property'''
         if not isinstance(afc, bool):
             raise TypeError('afc must be a bool')
-        self.client.main.set_afc(bool(afc))
+        self.client.main.set_afc(afc)
 
     @property
     def squelch(self):
@@ -132,7 +132,7 @@ class Main(object):
         NOTE: sphinx ignores docstrings from setters, the documentation is above under the @property'''
         if not isinstance(squelch, bool):
             raise TypeError('squelch state must be a bool')
-        self.client.main.set_squelch(bool(squelch))
+        self.client.main.set_squelch(squelch)
 
     @property
     def squelch_level(self):
