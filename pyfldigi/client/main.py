@@ -294,6 +294,8 @@ class Main(object):
             if state in ['TX', 'RX', 'TUNE']:
                 break
             time.sleep(0.005)
+        else:
+            state = 'ERROR'
         return state
 
     def rx(self):
