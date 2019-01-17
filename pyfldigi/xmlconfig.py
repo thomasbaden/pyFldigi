@@ -89,9 +89,10 @@ class XmlConfig(object):
         SETTING2 : 1
         # and so on
         '''
-        s = ''
-        for key, value in self.settings.items():
-            s += ('{} : {}\n'.format(key, value))
+        s = ''.join(
+            '{} : {}\n'.format(key, value)
+            for key, value in self.settings.items()
+        )
         return s
 
     def __getitem__(self, key):
