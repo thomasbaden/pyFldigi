@@ -67,7 +67,7 @@ class Client(object):
         self.logger = logging.getLogger('pyfldigi.Client')
         self.ip_address = hostname
         self.port = port
-        self.logger.debug('Attempting to connect to connect to fldigi at IP address={}, port={}, via XMP-RPC'.format(self.ip_address, self.port))
+        self.logger.debug('Attempting to connect to connect to fldigi at IP address=%r, port=%d, via XMP-RPC', self.ip_address, self.port)
         self.client = xmlrpc.client.ServerProxy('http://{}:{}/'.format(self.ip_address, self.port), transport=RequestsTransport(use_builtin_types=True), allow_none=True)
         self.main = Main(clientObj=self)
         self.modem = Modem(clientObj=self)
@@ -127,7 +127,7 @@ class Client(object):
         fldigi
         '''
         name = self.client.fldigi.name()
-        self.logger.debug('name returned {}'.format(name))
+        self.logger.debug('name returned %r', name)
 
     @property
     def version(self):
