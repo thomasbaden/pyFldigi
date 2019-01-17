@@ -282,18 +282,20 @@ class Main(object):
         >>> fldigi.get_trx_state()
         'RX'
         '''
-        for tries in range(0, 3):  # retry up to 3 times.
+        for tries in range(3):  # retry up to 3 times.
             try:
                 state = str(self.client.main.get_trx_status()).upper()
             except Exception as e:
                 if suppress_errors is False:
                     raise
                 else:
-                    print('Exception @ get_trx_state() : {}'.format(e))
+                    self.logger.exception('Exception @ get_trx_state()')
                     state = 'ERROR'
             if state in ['TX', 'RX', 'TUNE']:
                 break
             time.sleep(0.005)
+        else:
+            state = 'ERROR'
         return state
 
     def rx(self):
