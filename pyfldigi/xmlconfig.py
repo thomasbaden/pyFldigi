@@ -59,7 +59,7 @@ class XmlConfig(object):
         self.tree = ElementTree.parse(self.location)
         self.root = self.tree.getroot()
         if not self.root.tag == 'FLDIGI_DEFS':
-            raise Exception('Expected root tag to be \'FLDIGI_DEFS\' but got {}'.format(self.root.tag))
+            raise Exception('Expected root tag to be \'FLDIGI_DEFS\' but got {!r}'.format(self.root.tag))
         for child in self.root:
             self.settings[str(child.tag).lower()] = child.text
 

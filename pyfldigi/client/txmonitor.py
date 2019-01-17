@@ -59,9 +59,9 @@ class _TxData(object):
         else:
             data = str(self.data)
         if len(self.data) > 25:
-            data = '\'{}\'... (length={})'.format(data[0:25], len(data))
+            data = '{!r}... (length={})'.format(data[:25], len(data))
         else:
-            data = '\'{}\''.format(data)
+            data = '{!r}'.format(data)
         return 'T={:.3f}s: {}'.format(self.time, data)
 
 
