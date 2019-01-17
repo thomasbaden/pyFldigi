@@ -289,7 +289,7 @@ class Main(object):
                 if suppress_errors is False:
                     raise
                 else:
-                    print('Exception @ get_trx_state() : {}'.format(e))
+                    self.logger.exception('Exception @ get_trx_state()')
                     state = 'ERROR'
             if state in ['TX', 'RX', 'TUNE']:
                 break
