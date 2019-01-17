@@ -74,8 +74,8 @@ class _History(object):
         self.txdata_history = []
 
     def __str__(self):
-        s = 'State History:\n{}\n'.format('\n'.join(['  {}'.format(str(i)) for i in self.state_history]))
-        s += 'TX data History:\n{}\n'.format('\n'.join(['  {}'.format(str(i)) for i in self.txdata_history]))
+        s = 'State History:\n{}\n'.format('\n'.join('  {}'.format(str(i)) for i in self.state_history))
+        s += 'TX data History:\n{}\n'.format('\n'.join('  {}'.format(str(i)) for i in self.txdata_history))
         s += 'Last TX time was: {}\n'.format(self.get_last_txdata_time())
         return s
 
